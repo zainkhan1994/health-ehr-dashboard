@@ -1,16 +1,16 @@
 {
   "patient": {
-    "name": "Zain Khan",
-    "dob": "1994-03-09",
-    "age": 31,
+    "name": "******",
+    "dob": "******",
+    "age": "**",
     "gender": "Male",
     "ethnicity": "Not Hispanic or Latino",
-    "race": "Asian, Asian Indian",
+    "race": "******",
     "language": "English",
-    "address": "12251 ASHFORD VALLEY DR SUGAR LAND, TX 77478-6125, US",
-    "phone": "832-382-1675",
+    "address": "******",
+    "phone": "******",
     "allergies": "No Known Allergies",
-    "mrn": "ZK-031994"
+    "mrn": "******"
   },
   "providers": [
     {
