@@ -1247,6 +1247,12 @@
             transform: rotate(180deg);
         }
 
+        /* Highlighted row when clicking a chart point */
+        .highlight-row {
+            background: rgba(255, 235, 59, 0.2); /* soft yellow */
+            transition: background 0.4s ease;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -4330,7 +4336,7 @@
                         </thead>
                         <tbody>
                             ${sortedData.map(d => `
-                                <tr>
+                                <tr data-row-id="${d.id}">
                                     <td>${formatDate(d.collected)}</td>
                                     <td><strong>${d.result} ${d.units || ''}</strong></td>
                                     <td>${d.reference_range}</td>
@@ -4364,6 +4370,9 @@
                 yMid = (yMin + yMax) / 2;
             }
             
+            // Build an array of row ids aligned to the data points
+            const pointRowIds = sortedData.map(d => d.id);
+
             currentDetailChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -4376,11 +4385,19 @@
                         borderWidth: 3,
                         pointRadius: 6,
                         pointHoverRadius: 8,
+                        pointHitRadius: 10,
                         tension: 0.4,
                         fill: false
                     }]
                 },
                 options: {
+                    onClick: function(evt, elements) {
+                        if (!elements || !elements.length) return;
+                        const chart = this;
+                        const idx = elements[0].index;
+                        const rowId = pointRowIds[idx];
+                        if (rowId) highlightDataRow(rowId);
+                    },
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
@@ -4434,6 +4451,37 @@
             
             table.classList.toggle('visible');
             icon.classList.toggle('rotated');
+        }
+
+        function highlightDataRow(rowId) {
+            try {
+                const table = document.getElementById('detailDataTable');
+                if (!table) return;
+
+                // Remove existing highlights
+                document.querySelectorAll('.detail-data-table tr.highlight-row').forEach(r => r.classList.remove('highlight-row'));
+
+                const target = table.querySelector(`tr[data-row-id="${rowId}"]`);
+                if (!target) return;
+
+                // Ensure table is visible
+                if (!table.classList.contains('visible')) {
+                    table.classList.add('visible');
+                    const icon = document.getElementById('tableToggleIcon');
+                    if (icon) icon.classList.add('rotated');
+                }
+
+                // Scroll into view smoothly within the table container
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Add highlight class and remove after 3s
+                target.classList.add('highlight-row');
+                setTimeout(() => {
+                    target.classList.remove('highlight-row');
+                }, 3000);
+            } catch (e) {
+                console.warn('highlightDataRow error', e);
+            }
         }
 
         // Trends Analysis View Functions
@@ -4552,7 +4600,7 @@
                         </thead>
                         <tbody>
                             ${sortedData.map(d => `
-                                <tr>
+                                <tr data-row-id="${d.id}">
                                     <td>${formatDate(d.collected)}</td>
                                     <td><strong>${d.result} ${d.units || ''}</strong></td>
                                     <td>${d.reference_range}</td>
@@ -4586,6 +4634,8 @@
                 yMid = (yMin + yMax) / 2;
             }
             
+            const trendsPointRowIds = sortedData.map(d => d.id);
+
             window.trendsAnalysisChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -4598,11 +4648,18 @@
                         borderWidth: 3,
                         pointRadius: 6,
                         pointHoverRadius: 8,
+                        pointHitRadius: 10,
                         tension: 0.4,
                         fill: false
                     }]
                 },
                 options: {
+                    onClick: function(evt, elements) {
+                        if (!elements || !elements.length) return;
+                        const idx = elements[0].index;
+                        const rowId = trendsPointRowIds[idx];
+                        if (rowId) highlightDataRow(rowId);
+                    },
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
