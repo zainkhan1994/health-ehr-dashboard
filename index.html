@@ -1865,7 +1865,6 @@
             });
             
             saveColumnVisibility();
-            applyColumnClasses();
             closeColumnVisibilityModal();
             
             // Re-render current view
@@ -1876,6 +1875,9 @@
                     populateAllResults();
                 }
             }
+            
+            // Apply column classes after re-rendering to ensure cells are hidden
+            applyColumnClasses();
         }
 
         function applyColumnClasses() {
@@ -1973,6 +1975,9 @@
             populateMedications();
             populateDiagnoses();
             createCharts();
+            
+            // Apply column visibility after all tables are populated
+            applyColumnClasses();
         }
 
         // Toggle functions
@@ -2147,6 +2152,9 @@
             
             const tbody = document.getElementById('myHighResultsBody');
             renderResultsTable(myHighResults, tbody);
+            
+            // Re-apply column visibility after rendering
+            applyColumnClasses();
         }
 
         function populateMyLowTests() {
@@ -2204,6 +2212,9 @@
             
             const tbody = document.getElementById('myLowResultsBody');
             renderResultsTable(myLowResults, tbody);
+            
+            // Re-apply column visibility after rendering
+            applyColumnClasses();
         }
 
         function exportMyInterpretations(type) {
@@ -2530,6 +2541,8 @@
                     const tbody = document.getElementById('allResultsBody');
                     const normalResults = allLabResults.filter(r => !r.flag || r.flag === '');
                     renderResultsTable(normalResults, tbody);
+                    // Re-apply column visibility after rendering
+                    applyColumnClasses();
                     break;
                 case 'filter-recent':
                     showView('all-results');
@@ -2806,6 +2819,9 @@
 
             const tbody = document.getElementById('allResultsBody');
             renderResultsTable(sortedResults, tbody);
+            
+            // Re-apply column visibility after sorting
+            applyColumnClasses();
         }
 
         function populateAllResults() {
@@ -2865,6 +2881,9 @@
             
             const tbody = document.getElementById('flaggedResultsBody');
             renderResultsTable(flaggedResults, tbody);
+            
+            // Re-apply column visibility after rendering
+            applyColumnClasses();
         }
 
         function exportFlaggedTests() {
@@ -2931,6 +2950,9 @@
             
             const tbody = document.getElementById('allResultsBody');
             renderResultsTable(filtered, tbody);
+            
+            // Re-apply column visibility after re-rendering
+            applyColumnClasses();
         }
 
         function populateCategoryViews() {
