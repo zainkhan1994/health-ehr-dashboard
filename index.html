@@ -1740,6 +1740,7 @@
         </div>
     </div>
 
+    <script src="scripts/column_visibility.js"></script>
     <script>
         let healthData = null;
         let allLabResults = [];
@@ -1760,149 +1761,32 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Column Visibility Management
-        let visibleColumns = {};
-        const allColumns = [
-            { id: 'bookmark', name: 'Bookmark', alwaysShow: false },
-            { id: 'testName', name: 'Test Name', alwaysShow: true },
-            { id: 'collected', name: 'Collected', alwaysShow: false },
-            { id: 'result', name: 'Result', alwaysShow: true },
-            { id: 'chart', name: 'Trend Chart', alwaysShow: false },
-            { id: 'units', name: 'Units', alwaysShow: false },
-            { id: 'referenceRange', name: 'Reference Range', alwaysShow: false },
-            { id: 'midpoint', name: 'Midpoint', alwaysShow: false },
-            { id: 'flag', name: 'Flag', alwaysShow: false },
-            { id: 'status', name: 'Status', alwaysShow: false },
-            { id: 'lab', name: 'Lab', alwaysShow: false },
-            { id: 'panel', name: 'Panel', alwaysShow: false },
-            { id: 'category', name: 'Category', alwaysShow: false },
-            { id: 'physician', name: 'Physician', alwaysShow: false },
-            { id: 'reported', name: 'Reported', alwaysShow: false },
-            { id: 'source', name: 'Source', alwaysShow: false },
-            { id: 'specimenID', name: 'Specimen ID', alwaysShow: false },
-            { id: 'fasting', name: 'Fasting', alwaysShow: false },
-            { id: 'notes', name: 'Notes', alwaysShow: false }
-        ];
+        // Column visibility is provided by shared script `scripts/column_visibility.js`
+        // Create aliases for variables used throughout the code
+        let visibleColumns = window.columnVisibility ? window.columnVisibility.visibleColumns : {};
+        const allColumns = window.columnVisibility ? window.columnVisibility.allColumns : [];
 
-        function loadColumnVisibility() {
-            const saved = localStorage.getItem('healthDashboardColumns');
-            if (saved) {
-                try {
-                    visibleColumns = JSON.parse(saved);
-                    // Ensure new columns default to visible
-                    allColumns.forEach(col => {
-                        if (visibleColumns[col.id] === undefined) {
-                            visibleColumns[col.id] = true;
+        function loadColumnVisibility() { if (window.columnVisibility && window.columnVisibility.loadColumnVisibility) window.columnVisibility.loadColumnVisibility(); }
+        function saveColumnVisibility() { if (window.columnVisibility && window.columnVisibility.saveColumnVisibility) window.columnVisibility.saveColumnVisibility(); }
+        function openColumnVisibilityModal() { if (window.columnVisibility && window.columnVisibility.openColumnVisibilityModal) window.columnVisibility.openColumnVisibilityModal(); }
+        function closeColumnVisibilityModal() { if (window.columnVisibility && window.columnVisibility.closeColumnVisibilityModal) window.columnVisibility.closeColumnVisibilityModal(); }
+        function closeColumnModalOnClickOutside(e) { if (e.target && e.target.id === 'columnModal') closeColumnVisibilityModal(); }
+        function selectAllColumns() { if (window.columnVisibility && window.columnVisibility.selectAllColumns) window.columnVisibility.selectAllColumns(); }
+        function deselectAllColumns() { if (window.columnVisibility && window.columnVisibility.deselectAllColumns) window.columnVisibility.deselectAllColumns(); }
+        function applyColumnVisibility() { 
+            if (window.columnVisibility && window.columnVisibility.applyColumnVisibility) {
+                window.columnVisibility.applyColumnVisibility(function() {
+                    const currentView = document.querySelector('.view-content.active');
+                    if (currentView) {
+                        const viewId = currentView.id.replace('view-', '');
+                        if (viewId === 'all-results' && typeof populateAllResults === 'function') {
+                            populateAllResults();
                         }
-                    });
-                } catch (e) {
-                    // Default: show all columns
-                    visibleColumns = {};
-                    allColumns.forEach(col => visibleColumns[col.id] = true);
-                }
-            } else {
-                // Default: show all columns
-                allColumns.forEach(col => visibleColumns[col.id] = true);
-            }
-        }
-
-        function saveColumnVisibility() {
-            localStorage.setItem('healthDashboardColumns', JSON.stringify(visibleColumns));
-        }
-
-        function openColumnVisibilityModal() {
-            const modal = document.getElementById('columnModal');
-            const checkboxContainer = document.getElementById('columnCheckboxes');
-            
-            checkboxContainer.innerHTML = allColumns.map(col => `
-                <div class="checkbox-item">
-                    <input type="checkbox" 
-                           id="col-${col.id}" 
-                           ${visibleColumns[col.id] ? 'checked' : ''}
-                           ${col.alwaysShow ? 'disabled' : ''}>
-                    <label for="col-${col.id}">${col.name}${col.alwaysShow ? ' (Required)' : ''}</label>
-                </div>
-            `).join('');
-            
-            modal.classList.add('active');
-        }
-
-        function closeColumnVisibilityModal() {
-            document.getElementById('columnModal').classList.remove('active');
-        }
-
-        function closeColumnModalOnClickOutside(event) {
-            if (event.target.id === 'columnModal') {
-                closeColumnVisibilityModal();
-            }
-        }
-
-        function selectAllColumns() {
-            allColumns.forEach(col => {
-                visibleColumns[col.id] = true;
-                const checkbox = document.getElementById(`col-${col.id}`);
-                if (checkbox && !checkbox.disabled) checkbox.checked = true;
-            });
-        }
-
-        function deselectAllColumns() {
-            allColumns.forEach(col => {
-                if (!col.alwaysShow) {
-                    visibleColumns[col.id] = false;
-                    const checkbox = document.getElementById(`col-${col.id}`);
-                    if (checkbox) checkbox.checked = false;
-                }
-            });
-        }
-
-        function applyColumnVisibility() {
-            // Update visibility settings from checkboxes
-            allColumns.forEach(col => {
-                const checkbox = document.getElementById(`col-${col.id}`);
-                if (checkbox && !checkbox.disabled) {
-                    visibleColumns[col.id] = checkbox.checked;
-                }
-            });
-            
-            saveColumnVisibility();
-            applyColumnClasses();
-            closeColumnVisibilityModal();
-            
-            // Re-render current view
-            const currentView = document.querySelector('.view-content.active');
-            if (currentView) {
-                const viewId = currentView.id.replace('view-', '');
-                if (viewId === 'all-results') {
-                    populateAllResults();
-                }
-            }
-        }
-
-        function applyColumnClasses() {
-            // Apply hidden-column class to all table headers and cells
-            document.querySelectorAll('table').forEach(table => {
-                allColumns.forEach((col, index) => {
-                    const headers = table.querySelectorAll(`thead th:nth-child(${index + 1})`);
-                    const cells = table.querySelectorAll(`tbody td:nth-child(${index + 1})`);
-                    
-                    headers.forEach(header => {
-                        if (visibleColumns[col.id]) {
-                            header.classList.remove('hidden-column');
-                        } else {
-                            header.classList.add('hidden-column');
-                        }
-                    });
-                    
-                    cells.forEach(cell => {
-                        if (visibleColumns[col.id]) {
-                            cell.classList.remove('hidden-column');
-                        } else {
-                            cell.classList.add('hidden-column');
-                        }
-                    });
+                    }
                 });
-            });
+            }
         }
+        function applyColumnClasses() { if (window.columnVisibility && window.columnVisibility.applyColumnClasses) window.columnVisibility.applyColumnClasses(); }
 
         // Load data
         async function loadData() {
