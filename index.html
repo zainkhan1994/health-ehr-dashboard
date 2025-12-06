@@ -5368,8 +5368,16 @@
 
         // Initialize body explorer when the view is shown
         function initBodyExplorerOnView() {
-            // Small delay to ensure DOM is ready
-            setTimeout(initBodyExplorer, 100);
+            // Use requestAnimationFrame for better timing consistency
+            requestAnimationFrame(function() {
+                const bodySvg = document.getElementById('body-svg');
+                if (bodySvg && bodySvg.querySelectorAll('.body-part').length > 0) {
+                    initBodyExplorer();
+                } else {
+                    // Fallback: retry on next frame if elements not ready
+                    requestAnimationFrame(initBodyExplorer);
+                }
+            });
         }
 
         // Initialize on load
