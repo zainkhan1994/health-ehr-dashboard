@@ -1257,6 +1257,266 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        /* Body Explorer Styles */
+        .body-explorer-container {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .body-explorer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .body-svg-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #body-svg {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .body-part {
+            fill: #a8d5ba;
+            stroke: #2d5a3d;
+            stroke-width: 1.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .body-part:hover {
+            fill: #7bc89a;
+            stroke: #1e3c72;
+            stroke-width: 2.5;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .body-part.active {
+            fill: #4a9d6b;
+            stroke: #1e3c72;
+            stroke-width: 3;
+        }
+
+        .organ-part {
+            fill: #f4a4a4;
+            stroke: #b85454;
+            stroke-width: 1;
+            opacity: 0.85;
+        }
+
+        .organ-part:hover {
+            fill: #e87878;
+            stroke: #8b3a3a;
+            opacity: 1;
+        }
+
+        .organ-part.active {
+            fill: #d45c5c;
+            stroke: #8b3a3a;
+            stroke-width: 2;
+            opacity: 1;
+        }
+
+        .body-part-tooltip {
+            position: absolute;
+            background: rgba(30, 60, 114, 0.95);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+            white-space: nowrap;
+        }
+
+        .body-part-tooltip.visible {
+            opacity: 1;
+        }
+
+        .body-info-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+
+        .body-part-info {
+            height: 100%;
+        }
+
+        .info-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            min-height: 400px;
+            color: #666;
+        }
+
+        .info-placeholder h3 {
+            font-size: 1.5rem;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .info-placeholder p {
+            font-size: 1rem;
+            max-width: 300px;
+        }
+
+        .body-part-detail {
+            animation: fadeIn 0.3s ease;
+        }
+
+        .body-part-detail h3 {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .body-part-detail h3 i {
+            font-size: 1.4rem;
+        }
+
+        .body-part-detail .part-category {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .body-part-detail .part-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        .body-part-detail .part-section {
+            margin-bottom: 20px;
+        }
+
+        .body-part-detail .part-section h4 {
+            font-size: 1.1rem;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .body-part-detail .part-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .body-part-detail .part-section li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .body-part-detail .part-section li:last-child {
+            border-bottom: none;
+        }
+
+        .body-part-detail .part-section li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            color: #1e3c72;
+            font-weight: bold;
+        }
+
+        .body-part-detail .related-tests {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 20px;
+        }
+
+        .body-part-detail .related-tests h4 {
+            margin-bottom: 12px;
+        }
+
+        .body-part-detail .test-tag {
+            display: inline-block;
+            background: #1e3c72;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 4px;
+            transition: background 0.2s;
+        }
+
+        .body-part-detail .test-tag:hover {
+            background: #2a5298;
+        }
+
+        .body-legend {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .body-legend h4 {
+            font-size: 1rem;
+            color: #1e3c72;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -1417,6 +1677,13 @@
                 </div>
                 <div class="nav-item" onclick="showView('system-nervous')">
                     <i class="fas fa-brain"></i> Nervous
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Education</div>
+                <div class="nav-item" onclick="showView('body-explorer')">
+                    <i class="fas fa-person"></i> Body Explorer
                 </div>
             </div>
 
@@ -1736,6 +2003,88 @@
                     <h2><i class="fas fa-notes-medical"></i> Active Diagnoses</h2>
                 </div>
                 <div id="diagnosesContent"></div>
+            </div>
+
+            <!-- Body Explorer View -->
+            <div id="view-body-explorer" class="view-content">
+                <div class="page-header">
+                    <h2><i class="fas fa-person"></i> Interactive Body Explorer</h2>
+                </div>
+                <p style="color: #666; margin-bottom: 20px; font-size: 1.1em;">Click on any body part to learn more about it. Explore the human body interactively!</p>
+                
+                <div class="body-explorer-container">
+                    <div class="body-svg-wrapper">
+                        <svg id="body-svg" viewBox="0 0 200 450" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Head -->
+                            <ellipse id="body-head" class="body-part" cx="100" cy="35" rx="30" ry="35" data-part="head"/>
+                            
+                            <!-- Neck -->
+                            <rect id="body-neck" class="body-part" x="90" y="68" width="20" height="20" rx="3" data-part="neck"/>
+                            
+                            <!-- Torso -->
+                            <path id="body-chest" class="body-part" d="M60 88 L140 88 L145 180 L55 180 Z" data-part="chest"/>
+                            
+                            <!-- Abdomen -->
+                            <path id="body-abdomen" class="body-part" d="M55 180 L145 180 L140 250 L60 250 Z" data-part="abdomen"/>
+                            
+                            <!-- Left Arm -->
+                            <path id="body-left-arm" class="body-part" d="M55 88 L35 88 L20 180 L30 185 L45 110 L55 110 Z" data-part="left-arm"/>
+                            <ellipse id="body-left-hand" class="body-part" cx="22" cy="195" rx="12" ry="18" data-part="left-hand"/>
+                            
+                            <!-- Right Arm -->
+                            <path id="body-right-arm" class="body-part" d="M145 88 L165 88 L180 180 L170 185 L155 110 L145 110 Z" data-part="right-arm"/>
+                            <ellipse id="body-right-hand" class="body-part" cx="178" cy="195" rx="12" ry="18" data-part="right-hand"/>
+                            
+                            <!-- Pelvis/Hips -->
+                            <path id="body-pelvis" class="body-part" d="M60 250 L140 250 L145 280 L55 280 Z" data-part="pelvis"/>
+                            
+                            <!-- Left Leg -->
+                            <path id="body-left-leg" class="body-part" d="M55 280 L95 280 L90 380 L55 380 Z" data-part="left-leg"/>
+                            <path id="body-left-foot" class="body-part" d="M50 380 L90 380 L92 410 L45 410 L40 395 Z" data-part="left-foot"/>
+                            
+                            <!-- Right Leg -->
+                            <path id="body-right-leg" class="body-part" d="M105 280 L145 280 L145 380 L110 380 Z" data-part="right-leg"/>
+                            <path id="body-right-foot" class="body-part" d="M110 380 L150 380 L155 395 L158 410 L108 410 Z" data-part="right-foot"/>
+                            
+                            <!-- Internal Organs (shown as overlays) -->
+                            <ellipse id="body-brain" class="body-part organ-part" cx="100" cy="30" rx="18" ry="15" data-part="brain"/>
+                            <path id="body-heart" class="body-part organ-part" d="M90 120 C80 110 70 120 70 130 C70 145 90 155 100 165 C110 155 130 145 130 130 C130 120 120 110 110 120 C105 115 95 115 90 120 Z" data-part="heart"/>
+                            <ellipse id="body-lungs-left" class="body-part organ-part" cx="75" cy="130" rx="15" ry="30" data-part="lungs"/>
+                            <ellipse id="body-lungs-right" class="body-part organ-part" cx="125" cy="130" rx="15" ry="30" data-part="lungs"/>
+                            <ellipse id="body-stomach" class="body-part organ-part" cx="90" cy="195" rx="20" ry="15" data-part="stomach"/>
+                            <ellipse id="body-liver" class="body-part organ-part" cx="120" cy="190" rx="22" ry="18" data-part="liver"/>
+                            <ellipse id="body-kidneys-left" class="body-part organ-part" cx="75" cy="215" rx="10" ry="15" data-part="kidneys"/>
+                            <ellipse id="body-kidneys-right" class="body-part organ-part" cx="125" cy="215" rx="10" ry="15" data-part="kidneys"/>
+                            <path id="body-intestines" class="body-part organ-part" d="M70 230 Q80 235 90 230 Q100 225 110 230 Q120 235 130 230 M70 240 Q80 245 90 240 Q100 235 110 240 Q120 245 130 240" data-part="intestines" fill="none" stroke-width="4"/>
+                        </svg>
+                        
+                        <div class="body-part-tooltip" id="bodyPartTooltip"></div>
+                    </div>
+                    
+                    <div class="body-info-panel">
+                        <div id="bodyPartInfo" class="body-part-info">
+                            <div class="info-placeholder">
+                                <i class="fas fa-hand-pointer" style="font-size: 3rem; color: #1e3c72; margin-bottom: 15px;"></i>
+                                <h3>Select a Body Part</h3>
+                                <p>Click on any part of the body to learn about its function, associated organs, and related health information.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="body-legend">
+                    <h4><i class="fas fa-info-circle"></i> Legend</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #a8d5ba;"></span>
+                            <span>External Body Parts</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #f4a4a4;"></span>
+                            <span>Internal Organs</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -3953,6 +4302,8 @@
                 populateCustomViewsList();
             } else if (viewName === 'trends-analysis') {
                 populateTrendsAnalysisView();
+            } else if (viewName === 'body-explorer') {
+                initBodyExplorerOnView();
             }
             
             // Highlight nav item
@@ -4618,6 +4969,415 @@
             
             table.classList.toggle('visible');
             icon.classList.toggle('rotated');
+        }
+
+        // Body Explorer Data and Functions
+        const bodyPartData = {
+            'head': {
+                name: 'Head',
+                icon: 'fa-head-side',
+                category: 'External Body Part',
+                description: 'The head is the upper part of the human body containing the brain, eyes, ears, nose, and mouth. It houses the primary sensory organs and the central processing unit of the nervous system.',
+                functions: [
+                    'Houses and protects the brain',
+                    'Contains sensory organs (eyes, ears, nose, tongue)',
+                    'Enables facial expressions and communication',
+                    'Protects entry points to respiratory and digestive systems'
+                ],
+                relatedOrgans: ['Brain', 'Eyes', 'Ears', 'Nose', 'Mouth'],
+                relatedTests: ['MRI', 'CT Scan', 'EEG', 'Vision Tests', 'Hearing Tests']
+            },
+            'brain': {
+                name: 'Brain',
+                icon: 'fa-brain',
+                category: 'Internal Organ',
+                description: 'The brain is the command center of the human body. It controls all voluntary and involuntary actions, processes sensory information, enables thought, memory, emotion, and consciousness.',
+                functions: [
+                    'Controls all body functions and movements',
+                    'Processes and stores memories',
+                    'Enables thinking, reasoning, and emotions',
+                    'Regulates hormones and body temperature',
+                    'Interprets sensory information'
+                ],
+                relatedOrgans: ['Spinal Cord', 'Nerves', 'Pituitary Gland'],
+                relatedTests: ['MRI Brain', 'CT Scan', 'EEG', 'Cognitive Tests', 'Neurological Exam']
+            },
+            'neck': {
+                name: 'Neck',
+                icon: 'fa-head-side',
+                category: 'External Body Part',
+                description: 'The neck connects the head to the torso and contains vital structures including the cervical spine, trachea, esophagus, thyroid gland, and major blood vessels to the brain.',
+                functions: [
+                    'Supports and allows movement of the head',
+                    'Contains the airway (trachea)',
+                    'Houses the thyroid gland',
+                    'Carries blood vessels to and from the brain',
+                    'Contains lymph nodes for immune function'
+                ],
+                relatedOrgans: ['Thyroid', 'Trachea', 'Esophagus', 'Cervical Spine', 'Carotid Arteries'],
+                relatedTests: ['TSH', 'T3', 'T4', 'Thyroid Ultrasound', 'Neck X-ray']
+            },
+            'chest': {
+                name: 'Chest (Thorax)',
+                icon: 'fa-lungs',
+                category: 'External Body Part',
+                description: 'The chest, or thorax, is the area between the neck and abdomen. It contains vital organs including the heart, lungs, and major blood vessels, protected by the rib cage.',
+                functions: [
+                    'Protects heart and lungs with the rib cage',
+                    'Enables breathing through chest expansion',
+                    'Houses the heart for blood circulation',
+                    'Contains major blood vessels and lymph nodes'
+                ],
+                relatedOrgans: ['Heart', 'Lungs', 'Ribs', 'Esophagus', 'Thymus'],
+                relatedTests: ['Chest X-ray', 'ECG/EKG', 'Echocardiogram', 'Pulmonary Function Tests']
+            },
+            'heart': {
+                name: 'Heart',
+                icon: 'fa-heart',
+                category: 'Internal Organ',
+                description: 'The heart is a muscular organ that pumps blood throughout the body via the circulatory system. It beats approximately 100,000 times per day, supplying oxygen and nutrients to all tissues.',
+                functions: [
+                    'Pumps oxygenated blood to the body',
+                    'Returns deoxygenated blood to the lungs',
+                    'Maintains blood pressure',
+                    'Responds to body\'s oxygen demands',
+                    'Produces hormones that regulate blood volume'
+                ],
+                relatedOrgans: ['Arteries', 'Veins', 'Lungs', 'Blood Vessels'],
+                relatedTests: ['ECG/EKG', 'Echocardiogram', 'Cholesterol Panel', 'Troponin', 'BNP', 'Stress Test']
+            },
+            'lungs': {
+                name: 'Lungs',
+                icon: 'fa-lungs',
+                category: 'Internal Organ',
+                description: 'The lungs are a pair of spongy organs responsible for respiration. They exchange oxygen from the air with carbon dioxide from the blood, essential for cellular metabolism.',
+                functions: [
+                    'Exchange oxygen and carbon dioxide',
+                    'Filter small blood clots and air bubbles',
+                    'Regulate blood pH through CO2 levels',
+                    'Produce surfactant to prevent lung collapse',
+                    'Play a role in immune defense'
+                ],
+                relatedOrgans: ['Trachea', 'Bronchi', 'Diaphragm', 'Heart'],
+                relatedTests: ['Pulmonary Function Tests', 'Chest X-ray', 'CT Chest', 'Arterial Blood Gas', 'Pulse Oximetry']
+            },
+            'abdomen': {
+                name: 'Abdomen',
+                icon: 'fa-stomach',
+                category: 'External Body Part',
+                description: 'The abdomen is the region between the chest and pelvis containing many vital digestive and urinary organs. It is divided into regions for medical examination and diagnosis.',
+                functions: [
+                    'Houses digestive organs',
+                    'Contains kidneys and adrenal glands',
+                    'Protects abdominal organs with muscle wall',
+                    'Assists in breathing through diaphragm movement',
+                    'Supports core body stability'
+                ],
+                relatedOrgans: ['Stomach', 'Liver', 'Intestines', 'Kidneys', 'Spleen', 'Pancreas'],
+                relatedTests: ['Abdominal Ultrasound', 'CT Abdomen', 'Liver Function Tests', 'Kidney Function Tests', 'Lipase', 'Amylase']
+            },
+            'stomach': {
+                name: 'Stomach',
+                icon: 'fa-stomach',
+                category: 'Internal Organ',
+                description: 'The stomach is a muscular, hollow organ that receives food from the esophagus. It secretes acid and enzymes to break down food, mixing it into a semi-liquid form called chyme.',
+                functions: [
+                    'Stores and mixes food with digestive juices',
+                    'Secretes hydrochloric acid to kill bacteria',
+                    'Produces pepsin to digest proteins',
+                    'Absorbs some medications and alcohol',
+                    'Releases food gradually to small intestine'
+                ],
+                relatedOrgans: ['Esophagus', 'Small Intestine', 'Liver', 'Pancreas'],
+                relatedTests: ['H. pylori Test', 'Upper Endoscopy', 'Gastric Emptying Study', 'Barium Swallow']
+            },
+            'liver': {
+                name: 'Liver',
+                icon: 'fa-liver',
+                category: 'Internal Organ',
+                description: 'The liver is the largest internal organ and performs over 500 vital functions. It detoxifies blood, produces bile for digestion, stores nutrients, and synthesizes essential proteins.',
+                functions: [
+                    'Detoxifies blood and metabolizes drugs',
+                    'Produces bile for fat digestion',
+                    'Stores glycogen, vitamins, and minerals',
+                    'Synthesizes proteins including clotting factors',
+                    'Regulates blood sugar levels',
+                    'Breaks down old red blood cells'
+                ],
+                relatedOrgans: ['Gallbladder', 'Pancreas', 'Small Intestine'],
+                relatedTests: ['AST', 'ALT', 'Alkaline Phosphatase', 'Bilirubin', 'Albumin', 'GGT', 'Liver Ultrasound']
+            },
+            'kidneys': {
+                name: 'Kidneys',
+                icon: 'fa-kidneys',
+                category: 'Internal Organ',
+                description: 'The kidneys are a pair of bean-shaped organs that filter blood, remove waste products, and regulate fluid balance. They produce urine and play crucial roles in blood pressure regulation.',
+                functions: [
+                    'Filter blood and remove waste products',
+                    'Regulate fluid and electrolyte balance',
+                    'Control blood pressure through renin',
+                    'Produce erythropoietin for red blood cell production',
+                    'Activate vitamin D for bone health',
+                    'Maintain acid-base balance'
+                ],
+                relatedOrgans: ['Ureters', 'Bladder', 'Adrenal Glands'],
+                relatedTests: ['Creatinine', 'BUN', 'eGFR', 'Urinalysis', 'Kidney Ultrasound', 'Electrolytes']
+            },
+            'intestines': {
+                name: 'Intestines',
+                icon: 'fa-bacteria',
+                category: 'Internal Organ',
+                description: 'The intestines consist of the small and large intestine. The small intestine absorbs most nutrients, while the large intestine absorbs water and forms waste for elimination.',
+                functions: [
+                    'Digest and absorb nutrients (small intestine)',
+                    'Absorb water and electrolytes (large intestine)',
+                    'House beneficial gut bacteria (microbiome)',
+                    'Produce some vitamins through bacteria',
+                    'Form and store feces for elimination',
+                    'Participate in immune function'
+                ],
+                relatedOrgans: ['Stomach', 'Liver', 'Pancreas', 'Appendix', 'Rectum'],
+                relatedTests: ['Colonoscopy', 'Stool Tests', 'Celiac Panel', 'Fecal Occult Blood', 'CT Colonography']
+            },
+            'pelvis': {
+                name: 'Pelvis',
+                icon: 'fa-bone',
+                category: 'External Body Part',
+                description: 'The pelvis is the bony structure at the base of the spine. It supports the weight of the upper body, protects pelvic organs, and connects the spine to the legs.',
+                functions: [
+                    'Supports upper body weight',
+                    'Protects reproductive and urinary organs',
+                    'Provides attachment for leg muscles',
+                    'Allows walking and running movements',
+                    'Houses the bladder and reproductive organs'
+                ],
+                relatedOrgans: ['Bladder', 'Reproductive Organs', 'Hip Bones', 'Sacrum'],
+                relatedTests: ['Pelvic X-ray', 'Pelvic Ultrasound', 'MRI Pelvis', 'Bone Density Scan']
+            },
+            'left-arm': {
+                name: 'Left Arm',
+                icon: 'fa-hand',
+                category: 'External Body Part',
+                description: 'The arm extends from the shoulder to the wrist and contains muscles, bones, blood vessels, and nerves. It enables a wide range of movements and fine motor skills.',
+                functions: [
+                    'Enables reaching and lifting',
+                    'Performs fine motor movements',
+                    'Carries blood to and from the hand',
+                    'Contains sensory nerves for touch',
+                    'Supports daily activities and work'
+                ],
+                relatedOrgans: ['Humerus', 'Radius', 'Ulna', 'Biceps', 'Triceps', 'Brachial Artery'],
+                relatedTests: ['Blood Pressure', 'X-ray', 'EMG', 'Nerve Conduction Study', 'Blood Draw']
+            },
+            'right-arm': {
+                name: 'Right Arm',
+                icon: 'fa-hand',
+                category: 'External Body Part',
+                description: 'The arm extends from the shoulder to the wrist and contains muscles, bones, blood vessels, and nerves. It enables a wide range of movements and fine motor skills.',
+                functions: [
+                    'Enables reaching and lifting',
+                    'Performs fine motor movements',
+                    'Carries blood to and from the hand',
+                    'Contains sensory nerves for touch',
+                    'Supports daily activities and work'
+                ],
+                relatedOrgans: ['Humerus', 'Radius', 'Ulna', 'Biceps', 'Triceps', 'Brachial Artery'],
+                relatedTests: ['Blood Pressure', 'X-ray', 'EMG', 'Nerve Conduction Study', 'Blood Draw']
+            },
+            'left-hand': {
+                name: 'Left Hand',
+                icon: 'fa-hand-paper',
+                category: 'External Body Part',
+                description: 'The hand is one of the most complex parts of the body with 27 bones, numerous muscles, and a high density of nerve endings. It enables precise movements and tactile sensation.',
+                functions: [
+                    'Performs fine motor tasks and grip',
+                    'Provides sense of touch and temperature',
+                    'Enables tool use and manipulation',
+                    'Facilitates communication through gestures',
+                    'Contains pulse points for vital signs'
+                ],
+                relatedOrgans: ['Carpal Bones', 'Metacarpals', 'Phalanges', 'Hand Muscles', 'Radial Artery'],
+                relatedTests: ['Hand X-ray', 'Grip Strength Test', 'Rheumatoid Factor', 'Carpal Tunnel Tests']
+            },
+            'right-hand': {
+                name: 'Right Hand',
+                icon: 'fa-hand-paper',
+                category: 'External Body Part',
+                description: 'The hand is one of the most complex parts of the body with 27 bones, numerous muscles, and a high density of nerve endings. It enables precise movements and tactile sensation.',
+                functions: [
+                    'Performs fine motor tasks and grip',
+                    'Provides sense of touch and temperature',
+                    'Enables tool use and manipulation',
+                    'Facilitates communication through gestures',
+                    'Contains pulse points for vital signs'
+                ],
+                relatedOrgans: ['Carpal Bones', 'Metacarpals', 'Phalanges', 'Hand Muscles', 'Radial Artery'],
+                relatedTests: ['Hand X-ray', 'Grip Strength Test', 'Rheumatoid Factor', 'Carpal Tunnel Tests']
+            },
+            'left-leg': {
+                name: 'Left Leg',
+                icon: 'fa-person-walking',
+                category: 'External Body Part',
+                description: 'The leg extends from the hip to the ankle and is designed for weight-bearing, locomotion, and balance. It contains the body\'s largest bones and muscles.',
+                functions: [
+                    'Supports body weight when standing',
+                    'Enables walking, running, and jumping',
+                    'Maintains balance and posture',
+                    'Returns blood to the heart via veins',
+                    'Contains large muscle groups for strength'
+                ],
+                relatedOrgans: ['Femur', 'Tibia', 'Fibula', 'Quadriceps', 'Hamstrings', 'Femoral Artery'],
+                relatedTests: ['Leg X-ray', 'Doppler Ultrasound', 'Bone Density', 'EMG', 'Ankle-Brachial Index']
+            },
+            'right-leg': {
+                name: 'Right Leg',
+                icon: 'fa-person-walking',
+                category: 'External Body Part',
+                description: 'The leg extends from the hip to the ankle and is designed for weight-bearing, locomotion, and balance. It contains the body\'s largest bones and muscles.',
+                functions: [
+                    'Supports body weight when standing',
+                    'Enables walking, running, and jumping',
+                    'Maintains balance and posture',
+                    'Returns blood to the heart via veins',
+                    'Contains large muscle groups for strength'
+                ],
+                relatedOrgans: ['Femur', 'Tibia', 'Fibula', 'Quadriceps', 'Hamstrings', 'Femoral Artery'],
+                relatedTests: ['Leg X-ray', 'Doppler Ultrasound', 'Bone Density', 'EMG', 'Ankle-Brachial Index']
+            },
+            'left-foot': {
+                name: 'Left Foot',
+                icon: 'fa-shoe-prints',
+                category: 'External Body Part',
+                description: 'The foot is a complex structure with 26 bones, 33 joints, and over 100 muscles, tendons, and ligaments. It provides balance, support, and propulsion during movement.',
+                functions: [
+                    'Bears body weight and provides balance',
+                    'Absorbs shock during walking',
+                    'Provides propulsion for movement',
+                    'Enables standing on various surfaces',
+                    'Contains arch for efficient weight distribution'
+                ],
+                relatedOrgans: ['Tarsal Bones', 'Metatarsals', 'Phalanges', 'Achilles Tendon', 'Plantar Fascia'],
+                relatedTests: ['Foot X-ray', 'Gait Analysis', 'Diabetes Foot Exam', 'Ankle-Brachial Index']
+            },
+            'right-foot': {
+                name: 'Right Foot',
+                icon: 'fa-shoe-prints',
+                category: 'External Body Part',
+                description: 'The foot is a complex structure with 26 bones, 33 joints, and over 100 muscles, tendons, and ligaments. It provides balance, support, and propulsion during movement.',
+                functions: [
+                    'Bears body weight and provides balance',
+                    'Absorbs shock during walking',
+                    'Provides propulsion for movement',
+                    'Enables standing on various surfaces',
+                    'Contains arch for efficient weight distribution'
+                ],
+                relatedOrgans: ['Tarsal Bones', 'Metatarsals', 'Phalanges', 'Achilles Tendon', 'Plantar Fascia'],
+                relatedTests: ['Foot X-ray', 'Gait Analysis', 'Diabetes Foot Exam', 'Ankle-Brachial Index']
+            }
+        };
+
+        function initBodyExplorer() {
+            const bodyParts = document.querySelectorAll('.body-part');
+            const tooltip = document.getElementById('bodyPartTooltip');
+            const svgWrapper = document.querySelector('.body-svg-wrapper');
+            
+            bodyParts.forEach(part => {
+                // Mouse enter - show tooltip
+                part.addEventListener('mouseenter', function(e) {
+                    const partId = this.getAttribute('data-part');
+                    const partInfo = bodyPartData[partId];
+                    if (partInfo) {
+                        tooltip.textContent = partInfo.name;
+                        tooltip.classList.add('visible');
+                    }
+                });
+                
+                // Mouse move - position tooltip
+                part.addEventListener('mousemove', function(e) {
+                    const rect = svgWrapper.getBoundingClientRect();
+                    tooltip.style.left = (e.clientX - rect.left + 15) + 'px';
+                    tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+                });
+                
+                // Mouse leave - hide tooltip
+                part.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+                
+                // Click - show detailed info
+                part.addEventListener('click', function() {
+                    const partId = this.getAttribute('data-part');
+                    showBodyPartInfo(partId);
+                    
+                    // Remove active class from all parts
+                    bodyParts.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked part (and any parts with same data-part)
+                    document.querySelectorAll(`[data-part="${partId}"]`).forEach(p => {
+                        p.classList.add('active');
+                    });
+                });
+            });
+        }
+
+        function showBodyPartInfo(partId) {
+            const partInfo = bodyPartData[partId];
+            const infoPanel = document.getElementById('bodyPartInfo');
+            
+            if (!partInfo) {
+                infoPanel.innerHTML = `
+                    <div class="info-placeholder">
+                        <i class="fas fa-question-circle" style="font-size: 3rem; color: #999; margin-bottom: 15px;"></i>
+                        <h3>Information Not Available</h3>
+                        <p>Details for this body part are not yet available.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            infoPanel.innerHTML = `
+                <div class="body-part-detail">
+                    <h3><i class="fas ${partInfo.icon}"></i> ${partInfo.name}</h3>
+                    <div class="part-category">${partInfo.category}</div>
+                    
+                    <p class="part-description">${partInfo.description}</p>
+                    
+                    <div class="part-section">
+                        <h4><i class="fas fa-cogs"></i> Key Functions</h4>
+                        <ul>
+                            ${partInfo.functions.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="part-section">
+                        <h4><i class="fas fa-sitemap"></i> Related Organs & Structures</h4>
+                        <ul>
+                            ${partInfo.relatedOrgans.map(o => `<li>${o}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="related-tests">
+                        <h4><i class="fas fa-flask"></i> Related Medical Tests</h4>
+                        <div>
+                            ${partInfo.relatedTests.map(t => `<span class="test-tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize body explorer when the view is shown
+        function initBodyExplorerOnView() {
+            // Use requestAnimationFrame for better timing consistency
+            requestAnimationFrame(function() {
+                const bodySvg = document.getElementById('body-svg');
+                if (bodySvg && bodySvg.querySelectorAll('.body-part').length > 0) {
+                    initBodyExplorer();
+                } else {
+                    // Fallback: retry on next frame if elements not ready
+                    requestAnimationFrame(initBodyExplorer);
+                }
+            });
         }
 
         // Initialize on load
