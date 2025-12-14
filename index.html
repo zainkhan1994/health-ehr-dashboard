@@ -6055,7 +6055,7 @@
             endOfWeek.setDate(startOfWeek.getDate() + 6);
             
             document.getElementById('calendarMonthYear').textContent = 
-                `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
+                `${formatDate(formatDateISO(startOfWeek))} - ${formatDate(formatDateISO(endOfWeek))}`;
 
             // Get filter values
             const panelFilter = document.getElementById('calendarPanelFilter').value;
