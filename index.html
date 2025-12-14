@@ -2271,7 +2271,7 @@
                                 <i class="fas fa-chevron-left"></i> Prev
                             </button>
                             <div class="calendar-month-year" id="calendarMonthYear">
-                                January 2024
+                                Loading...
                             </div>
                             <button onclick="calendarNextMonth()">
                                 Next <i class="fas fa-chevron-right"></i>
@@ -3126,6 +3126,13 @@
                 month: 'short', 
                 day: 'numeric' 
             });
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         function determinePanel(testName) {
@@ -5942,7 +5949,8 @@
             
             allLabResults.forEach(lab => {
                 const date = lab.collected;
-                if (!date) return;
+                // Validate date format (YYYY-MM-DD)
+                if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
                 
                 if (!calendarLabsByDate[date]) {
                     calendarLabsByDate[date] = [];
@@ -6275,11 +6283,16 @@
                     if (test.date1 && test.date2) {
                         const num1 = parseFloat(test.date1.result);
                         const num2 = parseFloat(test.date2.result);
-                        if (!isNaN(num1) && !isNaN(num2)) {
+                        if (!isNaN(num1) && !isNaN(num2) && num1 !== 0) {
                             const diff = num2 - num1;
                             const pct = ((diff / num1) * 100).toFixed(1);
                             change = `<span style="color: ${diff > 0 ? '#dc3545' : '#28a745'};">
                                 ${diff > 0 ? '↗' : '↘'} ${Math.abs(pct)}%
+                            </span>`;
+                        } else if (!isNaN(num1) && !isNaN(num2) && num1 === 0 && num2 !== 0) {
+                            // Handle zero baseline case
+                            change = `<span style="color: #dc3545;">
+                                ↗ New value
                             </span>`;
                         }
                     }
@@ -6363,17 +6376,17 @@
                                      flag.toLowerCase().includes('low') ? 'low' : 'normal';
 
                     html += `
-                        <div class="lab-marker" onclick="showTestTrend('${lab.rawTestName}')">
-                            <div class="lab-marker-name">${lab.testName}</div>
+                        <div class="lab-marker" onclick="showTestTrend('${escapeHtml(lab.rawTestName)}')">
+                            <div class="lab-marker-name">${escapeHtml(lab.testName)}</div>
                             <div class="lab-marker-value">
-                                <span class="lab-marker-result">${lab.result} ${lab.units || ''}</span>
-                                ${flag ? `<span class="lab-marker-flag ${flagClass}">${flag}</span>` : 
+                                <span class="lab-marker-result">${escapeHtml(lab.result)} ${escapeHtml(lab.units || '')}</span>
+                                ${flag ? `<span class="lab-marker-flag ${flagClass}">${escapeHtml(flag)}</span>` : 
                                         '<span class="lab-marker-flag normal">Normal</span>'}
                             </div>
                             <div class="lab-marker-range">
-                                Reference: ${lab.referenceRange}
+                                Reference: ${escapeHtml(lab.referenceRange)}
                             </div>
-                            ${lab.notes ? `<div style="font-size: 0.85em; color: #666; margin-top: 5px; font-style: italic;">${lab.notes}</div>` : ''}
+                            ${lab.notes ? `<div style="font-size: 0.85em; color: #666; margin-top: 5px; font-style: italic;">${escapeHtml(lab.notes)}</div>` : ''}
                         </div>
                     `;
                 });
@@ -6449,6 +6462,8 @@
             refreshCalendar();
         }
 
+        // Converts Date object to YYYY-MM-DD format (ISO 8601 date component)
+        // Note: This returns only the date portion, not full ISO 8601 with time
         function formatDateISO(date) {
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
