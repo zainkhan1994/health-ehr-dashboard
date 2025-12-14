@@ -3135,6 +3135,44 @@
             return div.innerHTML;
         }
 
+        // Calculate percentage change between two numeric values with special handling for edge cases
+        function calculatePercentageChange(val1, val2) {
+            const num1 = parseFloat(val1);
+            const num2 = parseFloat(val2);
+            
+            // Return null if either value is not a valid number
+            if (isNaN(num1) || isNaN(num2)) {
+                return null;
+            }
+            
+            // Handle zero baseline cases
+            if (num1 === 0 && num2 !== 0) {
+                return { type: 'new', direction: 'up', text: 'New value', color: '#dc3545' };
+            }
+            
+            if (num2 === 0 && num1 !== 0) {
+                return { type: 'zero', direction: 'down', text: 'Dropped to zero', color: '#dc3545' };
+            }
+            
+            if (num1 === 0 && num2 === 0) {
+                return { type: 'unchanged', direction: 'none', text: 'No change', color: '#666' };
+            }
+            
+            // Normal percentage calculation
+            const diff = num2 - num1;
+            const pct = ((diff / num1) * 100).toFixed(1);
+            const direction = diff > 0 ? 'up' : 'down';
+            const color = diff > 0 ? '#dc3545' : '#28a745';
+            
+            return {
+                type: 'percentage',
+                direction: direction,
+                text: `${Math.abs(pct)}%`,
+                symbol: diff > 0 ? '↗' : '↘',
+                color: color
+            };
+        }
+
         function determinePanel(testName) {
             const panels = {
                 glucose: 'Comprehensive Metabolic Panel',
@@ -5949,8 +5987,12 @@
             
             allLabResults.forEach(lab => {
                 const date = lab.collected;
-                // Validate date format (YYYY-MM-DD)
+                // Validate date format (YYYY-MM-DD) and ensure it's a valid date
                 if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+                
+                // Additional validation: ensure date is actually valid
+                const dateObj = new Date(date);
+                if (isNaN(dateObj.getTime())) return;
                 
                 if (!calendarLabsByDate[date]) {
                     calendarLabsByDate[date] = [];
@@ -6281,19 +6323,17 @@
                     
                     let change = '';
                     if (test.date1 && test.date2) {
-                        const num1 = parseFloat(test.date1.result);
-                        const num2 = parseFloat(test.date2.result);
-                        if (!isNaN(num1) && !isNaN(num2) && num1 !== 0) {
-                            const diff = num2 - num1;
-                            const pct = ((diff / num1) * 100).toFixed(1);
-                            change = `<span style="color: ${diff > 0 ? '#dc3545' : '#28a745'};">
-                                ${diff > 0 ? '↗' : '↘'} ${Math.abs(pct)}%
-                            </span>`;
-                        } else if (!isNaN(num1) && !isNaN(num2) && num1 === 0 && num2 !== 0) {
-                            // Handle zero baseline case
-                            change = `<span style="color: #dc3545;">
-                                ↗ New value
-                            </span>`;
+                        const changeData = calculatePercentageChange(test.date1.result, test.date2.result);
+                        if (changeData) {
+                            if (changeData.type === 'percentage') {
+                                change = `<span style="color: ${changeData.color};">
+                                    ${changeData.symbol} ${changeData.text}
+                                </span>`;
+                            } else {
+                                change = `<span style="color: ${changeData.color};">
+                                    ${changeData.text}
+                                </span>`;
+                            }
                         }
                     }
 
