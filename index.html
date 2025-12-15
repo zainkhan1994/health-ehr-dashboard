@@ -17,10 +17,10 @@
 
         /* Top Navigation */
         .top-nav {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #0f2557 0%, #1e40af 50%, #3b82f6 100%);
             color: white;
             padding: 15px 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(15, 37, 87, 0.25);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,7 +42,7 @@
         /* Patient Banner */
         .patient-banner {
             background: white;
-            border-bottom: 4px solid #1e3c72;
+            border-bottom: 4px solid #3b82f6;
             padding: 25px 30px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
@@ -64,7 +64,7 @@
         }
 
         .toggle-btn {
-            background: #1e3c72;
+            background: #3b82f6;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -78,7 +78,7 @@
         }
 
         .toggle-btn:hover {
-            background: #2a5298;
+            background: #2563eb;
             transform: translateY(-1px);
         }
 
@@ -100,21 +100,21 @@
         }
 
         .info-item strong {
-            color: #1e3c72;
+            color: #1e40af;
             font-weight: 600;
         }
 
         .alert-banner {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
-            border-left: 5px solid #ffc107;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
             padding: 15px 20px;
             margin-top: 20px;
             border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
         }
 
         .alert-banner h4 {
-            color: #856404;
+            color: #92400e;
             margin-bottom: 8px;
             font-size: 1em;
             display: flex;
@@ -134,8 +134,8 @@
             padding: 8px 14px;
             border-radius: 20px;
             font-size: 0.85em;
-            color: #856404;
-            border: 1px solid #ffc107;
+            color: #92400e;
+            border: 1px solid #f59e0b;
             font-weight: 500;
         }
 
@@ -181,14 +181,14 @@
         }
 
         .nav-item:hover {
-            background: #f8f9fa;
-            color: #1e3c72;
+            background: #eff6ff;
+            color: #1e40af;
         }
 
         .nav-item.active {
-            background: #e8f2f8;
-            color: #1e3c72;
-            border-left-color: #1e3c72;
+            background: #dbeafe;
+            color: #1e40af;
+            border-left-color: #3b82f6;
             font-weight: 600;
         }
 
@@ -234,35 +234,35 @@
         }
 
         .btn-primary {
-            background: #1e3c72;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #152949;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(30, 60, 114, 0.3);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         .btn-success {
-            background: #28a745;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
         }
 
         .btn-success:hover {
-            background: #218838;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
 
         .btn-outline {
             background: white;
-            color: #1e3c72;
-            border: 2px solid #1e3c72;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
         }
 
         .btn-outline:hover {
-            background: #1e3c72;
+            background: #3b82f6;
             color: white;
         }
 
@@ -291,7 +291,7 @@
             border-radius: 10px;
             padding: 25px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-left: 5px solid #1e3c72;
+            border-left: 5px solid #3b82f6;
             transition: all 0.2s;
         }
 
@@ -301,34 +301,37 @@
         }
 
         .summary-card.alert {
-            border-left-color: #dc3545;
+            border-left-color: #ef4444;
+            background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
         }
 
         .summary-card.warning {
-            border-left-color: #ffc107;
+            border-left-color: #f59e0b;
+            background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
         }
 
         .summary-card.success {
-            border-left-color: #28a745;
+            border-left-color: #10b981;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
         }
 
         .summary-value {
             font-size: 2.5em;
             font-weight: 700;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 8px;
         }
 
         .summary-card.alert .summary-value {
-            color: #dc3545;
+            color: #ef4444;
         }
 
         .summary-card.warning .summary-value {
-            color: #ffc107;
+            color: #f59e0b;
         }
 
         .summary-card.success .summary-value {
-            color: #28a745;
+            color: #10b981;
         }
 
         .summary-label {
@@ -410,7 +413,7 @@
         .filter-group input:focus,
         .filter-group select:focus {
             outline: none;
-            border-color: #1e3c72;
+            border-color: #3b82f6;
         }
 
         /* Table */
@@ -428,7 +431,7 @@
         }
 
         thead {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -456,7 +459,7 @@
         }
 
         tbody tr:hover {
-            background: #f8f9fa;
+            background: #eff6ff;
         }
 
         tbody tr:last-child {
@@ -484,36 +487,36 @@
         }
 
         .badge-high {
-            background: #fee;
-            color: #dc3545;
-            border: 1px solid #dc3545;
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #ef4444;
         }
 
         .badge-low {
-            background: #e3f2fd;
-            color: #0066cc;
-            border: 1px solid #0066cc;
+            background: #dbeafe;
+            color: #1d4ed8;
+            border: 1px solid #3b82f6;
         }
 
         .badge-abnormal {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffc107;
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #f59e0b;
         }
 
         .badge-normal {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #28a745;
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
         }
 
         .value-high {
-            color: #dc3545;
+            color: #dc2626;
             font-weight: 700;
         }
 
         .value-low {
-            color: #0066cc;
+            color: #1d4ed8;
             font-weight: 700;
         }
 
@@ -531,44 +534,44 @@
         }
 
         .status-dropdown:hover {
-            border-color: #1e3c72;
+            border-color: #3b82f6;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .status-dropdown:focus {
             outline: none;
-            border-color: #2a5298;
-            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .status-low {
-            background: #ffebee;
-            border-color: #dc3545;
-            color: #dc3545;
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #dc2626;
         }
 
         .status-slightly-low {
-            background: #e3f2fd;
-            border-color: #2196f3;
-            color: #1976d2;
+            background: #dbeafe;
+            border-color: #60a5fa;
+            color: #2563eb;
         }
 
         .status-middle {
-            background: #e8f5e9;
-            border-color: #4caf50;
-            color: #2e7d32;
+            background: #d1fae5;
+            border-color: #34d399;
+            color: #059669;
         }
 
         .status-slightly-high {
-            background: #fff3e0;
-            border-color: #ff9800;
-            color: #e65100;
+            background: #fed7aa;
+            border-color: #fb923c;
+            color: #ea580c;
         }
 
         .status-high {
-            background: #fce4ec;
-            border-color: #e91e63;
-            color: #c2185b;
+            background: #fecaca;
+            border-color: #f87171;
+            color: #dc2626;
         }
 
         /* Chart Container */
@@ -632,7 +635,7 @@
         }
 
         .section-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
             padding: 12px 20px;
             border-radius: 6px 6px 0 0;
@@ -677,7 +680,7 @@
 
             .nav-item.active {
                 border-left: none;
-                border-bottom-color: #1e3c72;
+                border-bottom-color: #3b82f6;
             }
 
             .content-area {
@@ -747,7 +750,7 @@
 
         .modal-header h3 {
             margin: 0;
-            color: #1e3c72;
+            color: #3b82f6;
             font-size: 1.5rem;
         }
 
@@ -827,13 +830,13 @@
         }
 
         .icon-option:hover {
-            border-color: #1e3c72;
+            border-color: #3b82f6;
             background: #f8f9fa;
         }
 
         .icon-option.selected {
-            border-color: #1e3c72;
-            background: #1e3c72;
+            border-color: #3b82f6;
+            background: #3b82f6;
             color: white;
         }
 
@@ -872,7 +875,7 @@
         }
 
         .custom-view-card:hover {
-            border-color: #1e3c72;
+            border-color: #3b82f6;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
@@ -889,7 +892,7 @@
             gap: 12px;
             font-size: 1.3rem;
             font-weight: 600;
-            color: #1e3c72;
+            color: #3b82f6;
         }
 
         .custom-view-actions {
@@ -967,11 +970,11 @@
         }
 
         .chart-trend-up {
-            color: #28a745;
+            color: #10b981;
         }
 
         .chart-trend-down {
-            color: #dc3545;
+            color: #ef4444;
         }
 
         .chart-trend-stable {
@@ -1056,7 +1059,7 @@
         .sidebar-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -1081,19 +1084,19 @@
 
         .category-header:hover {
             background: #e8f0fe;
-            border-color: #1e3c72;
+            border-color: #3b82f6;
         }
 
         .category-header.active {
             background: #e8f0fe;
-            border-color: #1e3c72;
+            border-color: #3b82f6;
             font-weight: 600;
         }
 
         .category-icon {
             font-size: 1rem;
             margin-right: 8px;
-            color: #1e3c72;
+            color: #3b82f6;
             transition: transform 0.2s;
         }
 
@@ -1109,7 +1112,7 @@
 
         .test-count {
             font-size: 0.75rem;
-            background: #1e3c72;
+            background: #3b82f6;
             color: white;
             padding: 2px 8px;
             border-radius: 10px;
@@ -1139,12 +1142,12 @@
 
         .test-item-link:hover {
             background: #e8f0fe;
-            color: #1e3c72;
+            color: #3b82f6;
             padding-left: 16px;
         }
 
         .test-item-link.active {
-            background: #1e3c72;
+            background: #3b82f6;
             color: white;
             font-weight: 500;
         }
@@ -1163,7 +1166,7 @@
         .chart-title-detail {
             font-size: 1.8rem;
             font-weight: 600;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 8px;
         }
 
@@ -1299,14 +1302,14 @@
 
         .body-part:hover {
             fill: #7bc89a;
-            stroke: #1e3c72;
+            stroke: #3b82f6;
             stroke-width: 2.5;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .body-part.active {
             fill: #4a9d6b;
-            stroke: #1e3c72;
+            stroke: #3b82f6;
             stroke-width: 3;
         }
 
@@ -1374,7 +1377,7 @@
 
         .info-placeholder h3 {
             font-size: 1.5rem;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 10px;
         }
 
@@ -1389,7 +1392,7 @@
 
         .body-part-detail h3 {
             font-size: 1.8rem;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -1421,7 +1424,7 @@
 
         .body-part-detail .part-section h4 {
             font-size: 1.1rem;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -1450,7 +1453,7 @@
             content: "•";
             position: absolute;
             left: 8px;
-            color: #1e3c72;
+            color: #3b82f6;
             font-weight: bold;
         }
 
@@ -1467,7 +1470,7 @@
 
         .body-part-detail .test-tag {
             display: inline-block;
-            background: #1e3c72;
+            background: #3b82f6;
             color: white;
             padding: 6px 12px;
             border-radius: 20px;
@@ -1477,7 +1480,7 @@
         }
 
         .body-part-detail .test-tag:hover {
-            background: #2a5298;
+            background: #2563eb;
         }
 
         .body-legend {
@@ -1490,7 +1493,7 @@
 
         .body-legend h4 {
             font-size: 1rem;
-            color: #1e3c72;
+            color: #3b82f6;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -1785,7 +1788,7 @@
                 <div style="display: flex; gap: 0; height: calc(100vh - 200px); margin: 0 -30px;">
                     <!-- Left Sidebar - Test Categories -->
                     <div style="width: 300px; background: #f8f9fa; border-right: 2px solid #e0e0e0; overflow-y: auto; padding: 20px;">
-                        <div style="font-size: 1.1rem; font-weight: 600; color: #1e3c72; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                        <div style="font-size: 1.1rem; font-weight: 600; color: #3b82f6; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-flask"></i> Lab Tests
                         </div>
                         <div id="trendsAnalysisCategoriesList"></div>
@@ -2064,7 +2067,7 @@
                     <div class="body-info-panel">
                         <div id="bodyPartInfo" class="body-part-info">
                             <div class="info-placeholder">
-                                <i class="fas fa-hand-pointer" style="font-size: 3rem; color: #1e3c72; margin-bottom: 15px;"></i>
+                                <i class="fas fa-hand-pointer" style="font-size: 3rem; color: #3b82f6; margin-bottom: 15px;"></i>
                                 <h3>Select a Body Part</h3>
                                 <p>Click on any part of the body to learn about its function, associated organs, and related health information.</p>
                             </div>
@@ -2308,7 +2311,7 @@
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                background: #28a745;
+                background: #10b981;
                 color: white;
                 padding: 15px 25px;
                 border-radius: 5px;
@@ -2340,7 +2343,7 @@
             if (myHighResults.length === 0) {
                 container.innerHTML = `
                     <div style="text-align: center; padding: 3rem; color: #666;">
-                        <i class="fas fa-arrow-up" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3; color: #dc3545;"></i>
+                        <i class="fas fa-arrow-up" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3; color: #ef4444;"></i>
                         <p style="font-size: 1.2rem; margin: 0;">No high test interpretations yet</p>
                         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Go to "All Lab Results" and set tests to "High" or "Slightly High" status</p>
                     </div>
@@ -2349,7 +2352,7 @@
             }
 
             container.innerHTML = `
-                <div style="margin-bottom: 1rem; font-weight: 500; color: #dc3545;">
+                <div style="margin-bottom: 1rem; font-weight: 500; color: #ef4444;">
                     <i class="fas fa-arrow-up"></i> 
                     ${myHighResults.length} high test interpretation${myHighResults.length === 1 ? '' : 's'}
                 </div>
@@ -2400,7 +2403,7 @@
             if (myLowResults.length === 0) {
                 container.innerHTML = `
                     <div style="text-align: center; padding: 3rem; color: #666;">
-                        <i class="fas fa-arrow-down" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3; color: #ffc107;"></i>
+                        <i class="fas fa-arrow-down" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3; color: #f59e0b;"></i>
                         <p style="font-size: 1.2rem; margin: 0;">No low test interpretations yet</p>
                         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Go to "All Lab Results" and set tests to "Low" or "Slightly Low" status</p>
                     </div>
@@ -2409,7 +2412,7 @@
             }
 
             container.innerHTML = `
-                <div style="margin-bottom: 1rem; font-weight: 500; color: #ffc107;">
+                <div style="margin-bottom: 1rem; font-weight: 500; color: #f59e0b;">
                     <i class="fas fa-arrow-down"></i> 
                     ${myLowResults.length} low test interpretation${myLowResults.length === 1 ? '' : 's'}
                 </div>
@@ -2893,11 +2896,11 @@
                 const y = height - padding - ((val - minVal) / range) * (height - 2 * padding);
                 
                 // Determine color based on reference range
-                let color = '#1e3c72';
+                let color = '#3b82f6';
                 if (refLow && refHigh) {
-                    if (val < refLow) color = '#ffc107';
-                    else if (val > refHigh) color = '#dc3545';
-                    else color = '#28a745';
+                    if (val < refLow) color = '#f59e0b';
+                    else if (val > refHigh) color = '#ef4444';
+                    else color = '#10b981';
                 }
                 
                 return { x, y, val, date: r.collected, color };
@@ -2908,7 +2911,7 @@
             if (refLow && refHigh && minVal < refHigh && maxVal > refLow) {
                 const yLow = height - padding - ((refLow - minVal) / range) * (height - 2 * padding);
                 const yHigh = height - padding - ((refHigh - minVal) / range) * (height - 2 * padding);
-                refZone = `<rect x="${padding}" y="${yHigh}" width="${width - 2 * padding}" height="${yLow - yHigh}" fill="#28a745" opacity="0.1"/>`;
+                refZone = `<rect x="${padding}" y="${yHigh}" width="${width - 2 * padding}" height="${yLow - yHigh}" fill="#10b981" opacity="0.1"/>`;
             }
 
             // Create line path
@@ -2925,7 +2928,7 @@
                 <div class="mini-chart-container" onclick="showTestDetail('${testName}')">
                     <svg class="mini-chart-svg" viewBox="0 0 ${width} ${height}">
                         ${refZone}
-                        <path d="${pathData}" fill="none" stroke="#1e3c72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="${pathData}" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         ${points.map(p => `
                             <circle cx="${p.x}" cy="${p.y}" r="4" fill="${p.color}" class="mini-chart-point" 
                                     onmouseover="showMiniTooltip(event, '${formatDate(p.date)}', '${p.val}')"
@@ -2972,7 +2975,7 @@
                     <td style="text-align: center;">
                         <i class="fas fa-flag" 
                            onclick="toggleBookmark('${r.id}')" 
-                           style="cursor: pointer; color: ${r.bookmarked ? '#ffc107' : '#ddd'}; font-size: 1.2em; transition: color 0.2s;"
+                           style="cursor: pointer; color: ${r.bookmarked ? '#f59e0b' : '#ddd'}; font-size: 1.2em; transition: color 0.2s;"
                            onmouseover="this.style.opacity='0.7'"
                            onmouseout="this.style.opacity='1'"></i>
                     </td>
@@ -3078,7 +3081,7 @@
 
             container.innerHTML = `
                 <div style="margin-bottom: 1rem; font-weight: 500; color: #666;">
-                    <i class="fas fa-flag" style="color: #ffc107;"></i> 
+                    <i class="fas fa-flag" style="color: #f59e0b;"></i> 
                     ${flaggedResults.length} flagged test${flaggedResults.length === 1 ? '' : 's'}
                 </div>
                 <div class="table-wrapper">
@@ -3393,7 +3396,7 @@
                                                 <td style="text-align: center;">
                                                     <i class="fas fa-flag" 
                                                        onclick="toggleBookmark('${r.id}')" 
-                                                       style="cursor: pointer; color: ${r.bookmarked ? '#ffc107' : '#ddd'}; font-size: 1.2em;"></i>
+                                                       style="cursor: pointer; color: ${r.bookmarked ? '#f59e0b' : '#ddd'}; font-size: 1.2em;"></i>
                                                 </td>
                                                 <td><strong>${r.testName}</strong></td>
                                                 <td>${formatDate(r.collected)}</td>
@@ -3470,7 +3473,7 @@
                     description: 'Tests related to fatigue, low energy, and tiredness',
                     tests: ['ferritin', 'iron', 'vitamin_b12', 'vitamin_d', 'tsh', 't4_free', 't3_free', 
                             'glucose', 'hemoglobin', 'hematocrit', 'magnesium'],
-                    color: '#dc3545'
+                    color: '#ef4444'
                 },
                 mood: {
                     name: 'Depression/Mood Investigation',
@@ -3486,7 +3489,7 @@
                     description: 'Tests related to anxiety and stress levels',
                     tests: ['magnesium', 'vitamin_b12', 'vitamin_d', 'tsh', 't4_free', 'glucose', 
                             'calcium', 'potassium'],
-                    color: '#ffc107'
+                    color: '#f59e0b'
                 },
                 muscle: {
                     name: 'Muscle Weakness Investigation',
@@ -3532,7 +3535,7 @@
                     icon: 'fire-flame-curved',
                     description: 'Tests related to inflammation in the body',
                     tests: ['crp', 'sed_rate', 'wbc', 'neutrophils', 'lymphocytes'],
-                    color: '#dc3545'
+                    color: '#ef4444'
                 },
                 sleep: {
                     name: 'Sleep Issues Investigation',
@@ -3619,7 +3622,7 @@
                                     <tbody>
                                         ${results.sort((a, b) => new Date(b.collected) - new Date(a.collected)).map(r => `
                                             <tr>
-                                                ${visibleColumns.bookmark !== false ? `<td style="text-align: center;"><i class="fas fa-flag" onclick="toggleBookmark('${r.id}')" style="cursor: pointer; color: ${r.bookmarked ? '#ffc107' : '#ddd'};"></i></td>` : ''}
+                                                ${visibleColumns.bookmark !== false ? `<td style="text-align: center;"><i class="fas fa-flag" onclick="toggleBookmark('${r.id}')" style="cursor: pointer; color: ${r.bookmarked ? '#f59e0b' : '#ddd'};"></i></td>` : ''}
                                                 ${visibleColumns.testName !== false ? `<td><strong>${r.testName}</strong></td>` : ''}
                                                 ${visibleColumns.collected !== false ? `<td>${formatDate(r.collected)}</td>` : ''}
                                                 ${visibleColumns.result !== false ? `<td class="${r.flag ? (r.flag.toLowerCase().includes('high') ? 'value-high' : 'value-low') : ''}">${r.result}</td>` : ''}
@@ -3821,7 +3824,7 @@
             // Show success message
             const message = document.createElement('div');
             message.style.cssText = `
-                position: fixed; top: 20px; right: 20px; background: #28a745; color: white;
+                position: fixed; top: 20px; right: 20px; background: #10b981; color: white;
                 padding: 15px 25px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 z-index: 10000; font-weight: 500;
             `;
@@ -3854,7 +3857,7 @@
                 <div class="custom-view-card">
                     <div class="custom-view-header">
                         <div class="custom-view-title">
-                            <i class="fas fa-${view.icon}" style="color: #1e3c72;"></i>
+                            <i class="fas fa-${view.icon}" style="color: #3b82f6;"></i>
                             <span>${view.name}</span>
                         </div>
                         <div class="custom-view-actions">
@@ -3864,7 +3867,7 @@
                             <button class="btn btn-sm btn-outline" onclick="editCustomView(${view.id})">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <button class="btn btn-sm btn-outline" onclick="deleteCustomView(${view.id})" style="color: #dc3545; border-color: #dc3545;">
+                            <button class="btn btn-sm btn-outline" onclick="deleteCustomView(${view.id})" style="color: #ef4444; border-color: #ef4444;">
                                 <i class="fas fa-trash"></i> Delete
                             </button>
                         </div>
@@ -3937,19 +3940,19 @@
                     <div class="card-body">
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px;">
                             <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 1.8rem; font-weight: bold; color: #1e3c72;">${results.length}</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #3b82f6;">${results.length}</div>
                                 <div style="font-size: 0.85rem; color: #666;">Tests</div>
                             </div>
                             <div style="background: #f8d7da; padding: 12px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 1.8rem; font-weight: bold; color: #dc3545;">${highCount}</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #ef4444;">${highCount}</div>
                                 <div style="font-size: 0.85rem; color: #666;">High</div>
                             </div>
                             <div style="background: #fff3cd; padding: 12px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 1.8rem; font-weight: bold; color: #ffc107;">${lowCount}</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #f59e0b;">${lowCount}</div>
                                 <div style="font-size: 0.85rem; color: #666;">Low</div>
                             </div>
                             <div style="background: #d4edda; padding: 12px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 1.8rem; font-weight: bold; color: #28a745;">${results.length - highCount - lowCount}</div>
+                                <div style="font-size: 1.8rem; font-weight: bold; color: #10b981;">${results.length - highCount - lowCount}</div>
                                 <div style="font-size: 0.85rem; color: #666;">Normal</div>
                             </div>
                         </div>
@@ -3977,7 +3980,7 @@
                                 <tbody>
                                     ${results.sort((a, b) => new Date(b.collected) - new Date(a.collected)).map(r => `
                                         <tr>
-                                            <td style="text-align: center;"><i class="fas fa-flag" onclick="toggleBookmark('${r.id}')" style="cursor: pointer; color: ${r.bookmarked ? '#ffc107' : '#ddd'};"></i></td>
+                                            <td style="text-align: center;"><i class="fas fa-flag" onclick="toggleBookmark('${r.id}')" style="cursor: pointer; color: ${r.bookmarked ? '#f59e0b' : '#ddd'};"></i></td>
                                             <td><strong>${r.testName}</strong></td>
                                             <td>${formatDate(r.collected)}</td>
                                             <td class="${r.flag ? (r.flag.toLowerCase().includes('high') ? 'value-high' : 'value-low') : ''}">${r.result}</td>
@@ -4106,7 +4109,7 @@
             // Show success message
             const message = document.createElement('div');
             message.style.cssText = `
-                position: fixed; top: 20px; right: 20px; background: #28a745; color: white;
+                position: fixed; top: 20px; right: 20px; background: #10b981; color: white;
                 padding: 15px 25px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 z-index: 10000; font-weight: 500;
             `;
@@ -4140,7 +4143,7 @@
             // Show success message
             const message = document.createElement('div');
             message.style.cssText = `
-                position: fixed; top: 20px; right: 20px; background: #dc3545; color: white;
+                position: fixed; top: 20px; right: 20px; background: #ef4444; color: white;
                 padding: 15px 25px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 z-index: 10000; font-weight: 500;
             `;
@@ -4186,9 +4189,9 @@
                     <div class="card-body">
                         ${healthData.medications.map(med => `
                             <div style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
-                                <h4 style="color: #1e3c72; margin-bottom: 5px;">${med.medication}</h4>
+                                <h4 style="color: #3b82f6; margin-bottom: 5px;">${med.medication}</h4>
                                 <p style="color: #666; margin-bottom: 5px;"><strong>Dosage:</strong> ${med.dosage}</p>
-                                <p style="color: #666;"><strong>Status:</strong> <span style="color: #28a745; font-weight: 600;">${med.status}</span></p>
+                                <p style="color: #666;"><strong>Status:</strong> <span style="color: #10b981; font-weight: 600;">${med.status}</span></p>
                             </div>
                         `).join('')}
                     </div>
@@ -4203,9 +4206,9 @@
                     <div class="card-body">
                         ${healthData.diagnoses.map(dx => `
                             <div style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
-                                <h4 style="color: #1e3c72; margin-bottom: 5px;">${dx.condition}</h4>
+                                <h4 style="color: #3b82f6; margin-bottom: 5px;">${dx.condition}</h4>
                                 <p style="color: #666; margin-bottom: 5px;"><strong>ICD Code:</strong> ${dx.icd_code}</p>
-                                <p style="color: #666;"><strong>Status:</strong> <span style="color: ${dx.status === 'Active' ? '#dc3545' : '#28a745'}; font-weight: 600;">${dx.status}</span></p>
+                                <p style="color: #666;"><strong>Status:</strong> <span style="color: ${dx.status === 'Active' ? '#ef4444' : '#10b981'}; font-weight: 600;">${dx.status}</span></p>
                             </div>
                         `).join('')}
                     </div>
@@ -4238,7 +4241,7 @@
                         datasets: [{
                             label: formatTestName(test),
                             data: sorted.map(d => parseFloat(d.result || d.value)),
-                            borderColor: '#1e3c72',
+                            borderColor: '#3b82f6',
                             backgroundColor: 'rgba(30, 60, 114, 0.1)',
                             borderWidth: 3,
                             tension: 0.4,
