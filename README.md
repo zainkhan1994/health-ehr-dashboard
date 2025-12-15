@@ -8,6 +8,15 @@ A comprehensive, medical-grade Electronic Health Record (EHR) dashboard for visu
 
 ## 🌟 Features
 
+### 📅 **Calendar View** ⭐ *New!*
+- **Monthly & Weekly Views** - Visualize lab results on a calendar timeline
+- **Status Badges** - Color-coded indicators (Normal/High/Low/Mixed) on each date
+- **Side Panel Details** - Click any date to see all lab results grouped by panel
+- **Date Comparison** - Compare two dates side-by-side with percentage changes
+- **Smart Filtering** - Filter by specific panels (CMP, CBC, Lipid, Thyroid) or individual markers
+- **Trend Integration** - Click any lab marker to view its detailed trend chart
+- **Historical Tracking** - Track patterns and correlate labs with symptoms or events
+
 ### 📊 **Advanced Data Visualization**
 - **Inline Mini Sparkline Charts** - Quick trend indicators in every table row
 - **Detailed Trend Analysis** - Full-page interactive charts with Chart.js
@@ -151,13 +160,22 @@ The `health_data_database.json` contains structured lab results:
 - Quick stats and alerts
 - Collapsible statistics section
 
-### 2. **Trends Analysis** ⭐ *New!*
+### 2. **Calendar View** ⭐ *New!*
+- Monthly and weekly calendar modes
+- Color-coded date tiles showing lab status
+- Lab count indicators on each date
+- Sliding side panel with detailed results
+- Date comparison mode for tracking changes
+- Filter by panel or specific markers
+- Direct link to trend charts
+
+### 3. **Trends Analysis**
 - Full-page trend charts
 - Collapsible test category sidebar
 - Interactive Chart.js visualizations
 - Data table toggle
 
-### 3. **All Lab Results**
+### 4. **All Lab Results**
 - Complete searchable table
 - 19 customizable columns
 - Inline mini sparkline charts
